@@ -3,7 +3,8 @@ try:
 except ImportError:
     from django.conf.urls.defaults import *
 
+from taggit_autosuggest.views import list_tags
 
-urlpatterns = patterns('taggit_autosuggest.views',
-    url(r'^list/$', 'list_tags', name='taggit_autosuggest-list'),
-)
+urlpatterns = [
+    url(r'^list/$', list_tags, name='taggit_autosuggest-list'),
+]
