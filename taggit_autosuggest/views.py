@@ -2,13 +2,13 @@ import json
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.db.models.loading import get_model
+from django.apps import apps
 
 MAX_SUGGESTIONS = getattr(settings, 'TAGGIT_AUTOSUGGEST_MAX_SUGGESTIONS', 20)
 
 # define the default models for tags and tagged items
 TAG_MODEL = getattr(settings, 'TAGGIT_AUTOSUGGEST_MODEL', ('taggit', 'Tag'))
-TAG_MODEL = get_model(*TAG_MODEL)
+TAG_MODEL = apps.get_model(*TAG_MODEL)
 
 
 def list_tags(request):
